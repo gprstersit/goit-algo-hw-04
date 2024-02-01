@@ -1,12 +1,16 @@
 def get_cats_info(path):
+    # створюємо пустий словник
     cats_info = []
     try:
         with open(path, 'r', encoding='utf-8') as file:
             for line in file:
+                # Розділяємо рядок на айді, ім'я та вік
                 id, name, age = line.strip().split(',')
+                # додаємо в словник
                 cats_info.append({"id": id, "name": name, "age": age})
         return cats_info
 
+    # обробка помилок
     except FileNotFoundError:
         print(f"Помилка: Файл '{path}' не знайдено.")
         return None
